@@ -4,13 +4,13 @@ let resultadoActual = ''
 
 //Funciones de encriptacion
 
-function encriptador2(textoRecibido2) {
-  console.log("EJEC ENCRIPTADOR - TEXTO SIN ENCRIPTAR: " + textoRecibido2);
+function encriptador(textoRecibido) {
+//  console.log("EJEC ENCRIPTADOR - TEXTO SIN ENCRIPTAR: " + textoRecibido2);
 
   arregloResultado = [];
 
-  for (let index = 0; index < textoRecibido2.length; index++) {
-    switch (textoRecibido2[index]) {
+  for (let index = 0; index < textoRecibido.length; index++) {
+    switch (textoRecibido[index]) {
       case "a":
         arregloResultado.push("ai");
         break;
@@ -27,7 +27,7 @@ function encriptador2(textoRecibido2) {
         arregloResultado.push("ufat");
         break;
       default:
-        arregloResultado.push(textoRecibido2[index]);
+        arregloResultado.push(textoRecibido[index]);
         break;
     }
   }
@@ -35,7 +35,7 @@ function encriptador2(textoRecibido2) {
   return arregloResultado.join("");
 }
 
-function desEncriptador2(textoRecibidoparaDesencriptar) {
+function desEncriptador(textoRecibidoparaDesencriptar) {
   resultadoDeDesencriptacion = textoRecibidoparaDesencriptar
     .replace(/ai/g, "a")
     .replace(/enter/g, "e")
@@ -55,18 +55,18 @@ copiarAlPortapapes()
 
 function clickEncriptar() {
   ocultarElementosSeccionResultado();
-  let resultadoEncriptacion = encriptador2(obtenerDatosInput());
+  let resultadoEncriptacion = encriptador(obtenerDatosInput());
   modificarTextoResultado(resultadoEncriptacion);
 }
 
 function clickDesencriptar() {
   ocultarElementosSeccionResultado();
-  let resultadoDescriptacion = desEncriptador2(obtenerDatosInput());
+  let resultadoDescriptacion = desEncriptador(obtenerDatosInput());
   modificarTextoResultado(resultadoDescriptacion);
 }
 
 function obtenerDatosInput() {
-  return document.getElementById("idTextoIngresado").value;
+  return document.getElementById("idTextoIngresado").value.toLowerCase();
 }
 
 function modificarTextoResultado(texto) {
